@@ -1,0 +1,35 @@
+version: '3.3'
+services:
+  #  app:
+  #    build: .
+  #    container_name: dottechtest
+  #    restart: always
+  #    ports:
+  #      - 9000:9000
+  #    expose:
+  #      - 9000
+  rabitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    expose:
+      - 5672
+      - 15672
+  db:
+    image: mysql
+    container_name: mysqldottechtest
+    restart: always
+    environment:
+      MYSQL_DATABASE: data
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_ROOT_PASSWORD: dev
+    ports:
+      - 3307:3306
+    expose:
+      - 3306
+    volumes:
+      - ./database:/var/lib/mysql
