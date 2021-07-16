@@ -10,7 +10,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        const queue = 'task_queue';
+        const queue = 'posts_queue';
         const msg = process.argv.slice(2).join(' ') || "Hello World!";
 
         channel.assertQueue(queue, {

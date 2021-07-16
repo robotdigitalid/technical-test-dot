@@ -27,12 +27,12 @@
    
 4. Publish rabbitmq message
    ```
-   node publisher.js {"path":"/posts","method":"GET"}
-   node publisher.js {"path":"/posts","method":"GET","params":{"id":1}}
-   node publisher.js {"path":"/comments","method":"GET"}
-   node publisher.js {"path":"/posts","method":"POST","body":{"userId":1,"title":"Test","body":"test"}}
-   node publisher.js {"path":"/posts","method":"PUT","params":{"id":1},"body":{"id":1,"userId":1,"title":"Test","body":"test"}}
-   node publisher.js {"path":"/posts","method":"PATCH","params":{"id":1},"body":{"title":"Test","body":"test"}}
-   node publisher.js {"path":"/posts","method":"DELETE","params":{"id":1}}
+   node publisher.js "{\"path\":\"/posts\",\"method\":\"GET\"}"
+   node publisher.js "{\"path\":\"/posts\",\"method\":\"GET\",\"params\":{\"id\":1}}"
+   node publisher.js "{\"path\":\"/comments\",\"method\":\"GET\",\"params\":{\"id\":1}}"
+   node publisher.js "{\"path\":\"/posts\",\"method\":\"POST\",\"body\":{\"userId\":1,\"title\":\"Test\",\"body\":\"test\"}}"
+   node publisher.js "{\"path\":\"/posts\",\"method\":\"PUT\",\"params\":{\"id\":1},\"body\":{\"id\":1,\"userId\":1,\"title\":\"Test\",\"body\":\"test\"}}"
+   node publisher.js "{\"path\":\"/posts\",\"method\":\"PATCH\",\"params\":{\"id\":1},\"body\":{\"title\":\"Test\",\"body\":\"test\"}}"
+   node publisher.js "{\"path\":\"/posts\",\"method\":\"DELETE\",\"params\":{\"id\":1}}"
    ```
 

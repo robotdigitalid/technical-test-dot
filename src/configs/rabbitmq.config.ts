@@ -17,16 +17,16 @@ export interface PostMessage {
     }
 }
 
-amqp.connect(rabbitmqUrl, function (error0: Error, connection: Connection) {
+const consumer = () => amqp.connect(rabbitmqUrl, function (error0: Error, connection: Connection) {
     if (error0) return console.log('connectToRabbitmq', 'Fail', error0);
 
     connection.createChannel(function (error1: Error, channel: Channel) {
         if (error1) return console.log('createRabbitmqChannel', 'Fail', error1);
 
-        const queue = 'posts';
+        const queue = 'posts_queue';
 
         channel.assertQueue(queue, {durable: true});
-        channel.prefetch(1);
+        // channel.prefetch(1);
         channel.consume(queue, function (message: Message | null) {
             if (message) {
                 const msg = message.content.toString() as string;
@@ -46,6 +46,10 @@ amqp.connect(rabbitmqUrl, function (error0: Error, connection: Connection) {
                 if (data.path === '/posts' && data.method === 'DELETE')
                     return postController.fetchDeletePost(data);
             }
+        }, {
+            noAck: false
         })
     });
-})
+});
+
+export default consumer

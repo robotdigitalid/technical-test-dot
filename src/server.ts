@@ -3,6 +3,7 @@ require('dotenv').config();
 import router from "./routes";
 import express, {Request, Response} from 'express';
 import db from "./configs/database.config";
+import consumer from "./configs/rabbitmq.config";
 
 const port = 9000;
 
@@ -19,3 +20,4 @@ app.listen(port, () => {
 })
 
 db.sync().then(() => console.log('Table updated!')).catch(console.log);
+consumer();
